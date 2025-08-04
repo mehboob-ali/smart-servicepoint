@@ -73,6 +73,8 @@ const Categories = () => {
             }
         };
 
+        CategoryCard.displayName = 'CategoryCard'; 
+
         const IconComponent = category.icon;
 
         return (

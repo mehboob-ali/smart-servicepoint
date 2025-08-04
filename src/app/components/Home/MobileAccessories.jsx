@@ -21,6 +21,7 @@ const StarRating = memo(({ rating, reviews }) => (
         <span className="text-xs text-gray-500 ml-1">({reviews})</span>
     </div>
 ));
+StarRating.displayName = 'StarRating';
 
 const ProductCard = memo(({ item, index }) => (
     <motion.div
@@ -125,6 +126,8 @@ const ProductCard = memo(({ item, index }) => (
         </Card>
     </motion.div>
 ));
+
+ProductCard.displayName = 'ProductCard';
 
 const MobileAccessories = () => {
     const accessories = [
