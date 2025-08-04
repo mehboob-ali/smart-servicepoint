@@ -177,7 +177,7 @@ const Categories = () => {
                         variants={itemVariants}
                     >
                         From premium smartphones to expert repair services and quality accessories - 
-                        we've got everything covered for your mobile needs in Manvi.
+                        we&apos;ve got everything covered for your mobile needs in Manvi.
                     </motion.p>
                 </motion.div>
 
