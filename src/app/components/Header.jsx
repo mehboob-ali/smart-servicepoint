@@ -209,7 +209,7 @@ function Header(props) {
       </AppBar>
 
       {/* Offset */}
-      <Toolbar sx={{ minHeight: { xs: 64, md: 72 } }} />
+      {/* <Toolbar sx={{ minHeight: { xs: 64, md: 72 } }} /> */}
 
       {/* Mobile Drawer */}
       <Box component="nav">
