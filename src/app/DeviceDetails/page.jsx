@@ -175,4 +175,4 @@ const DeviceDetails = () => {
     );
 };
 
-export default page;
+export default DeviceDetails;
