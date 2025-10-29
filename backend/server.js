@@ -6,8 +6,18 @@ const authMiddleware = require("./middleware");
 const app = express();
 const JWT_SECRET = "secretkey";
 const authRoutes = require("./routes/authRoutes");
-const adminRoutes = require("./routes/adminRoutes"); 
+const adminRoutes = require("./routes/adminRoutes");
+const mongoose = require("mongoose");
+require("dotenv").config();
+const User = require("./models/User");
 //middleware
+
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => console.log("Connected to MongoDB"))
+  .catch((err) => {
+    console.log("Error connecting to MongoDB", err);
+  });
 
 app.use(
   cors({
@@ -24,8 +34,8 @@ app.get("/", (req, res) => {
   res.send("backend is running  🚀");
 });
 
-app.use("/api/",authRoutes);
-app.use("/api/admin/",adminRoutes)
+app.use("/api/", authRoutes);
+app.use("/api/admin/", adminRoutes);
 
 // app.get("/api/login", (req, res) => {
 //   console.log("Login route hit", req.body);
@@ -50,7 +60,6 @@ app.use("/api/admin/",adminRoutes)
 //       sameSite: "lax",
 //     });
 
-
 //     return res.json({
 //       message: "Logged in as admin",
 //       role: "admin",
@@ -72,8 +81,8 @@ app.use("/api/admin/",adminRoutes)
 
 // app.get("/api/admin/verify", authMiddleware, (req, res) => {
 //   res.json({
-//      message: `welcome ${req.user.email}`, 
-//      role: req.user.role 
+//      message: `welcome ${req.user.email}`,
+//      role: req.user.role
 //     });
 // });
 

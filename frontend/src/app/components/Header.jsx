@@ -16,7 +16,7 @@ import {
   Button,
   Badge,
 } from "@mui/material";
-import { MdMenu } from "react-icons/md";
+import { MdMenu, MdAccountCircle } from "react-icons/md";
 import { BsPhone, BsStarFill, BsCart } from "react-icons/bs";
 import { motion } from "framer-motion";
 import Link from "next/link";
@@ -54,7 +54,8 @@ function Header(props) {
       onClick={handleDrawerToggle}
       sx={{
         height: "100%",
-        background: "linear-gradient(to bottom right, #1e3a8a, #6b21a8, #4f46e5)",
+        background:
+          "linear-gradient(to bottom right, #1e3a8a, #6b21a8, #4f46e5)",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
@@ -70,7 +71,10 @@ function Header(props) {
                 borderRadius: 2,
                 transition: "all 0.3s",
                 backdropFilter: selectedIndex === index ? "blur(4px)" : "none",
-                backgroundColor: selectedIndex === index ? "rgba(255,255,255,0.2)" : "transparent",
+                backgroundColor:
+                  selectedIndex === index
+                    ? "rgba(255,255,255,0.2)"
+                    : "transparent",
                 "&:hover": {
                   backgroundColor: "rgba(255,255,255,0.1)",
                 },
@@ -94,7 +98,8 @@ function Header(props) {
     </Box>
   );
 
-  const container = window !== undefined ? () => window().document.body : undefined;
+  const container =
+    window !== undefined ? () => window().document.body : undefined;
 
   return (
     <Box sx={{ display: "flex", flexDirection: "column" }}>
@@ -112,7 +117,7 @@ function Header(props) {
       >
         <Toolbar
           sx={{
-            maxWidth: { xs: '100%', md: '1280px' },
+            maxWidth: { xs: "100%", md: "1280px" },
             mx: "auto",
             width: "100%",
             justifyContent: "space-between",
@@ -121,23 +126,24 @@ function Header(props) {
           }}
         >
           {/* Logo (Hidden admin access: triple-click within 1.5s) */}
-          <Box sx={{ display: "flex", alignItems: "center", cursor: 'pointer' }}
-               onClick={() => {
-                 clickCountRef.current += 1;
-                 if (!clickTimerRef.current) {
-                   clickTimerRef.current = setTimeout(() => {
-                     clickCountRef.current = 0;
-                     clickTimerRef.current && clearTimeout(clickTimerRef.current);
-                     clickTimerRef.current = null;
-                   }, 1500);
-                 }
-                 if (clickCountRef.current >= 3) {
-                   clickCountRef.current = 0;
-                   clickTimerRef.current && clearTimeout(clickTimerRef.current);
-                   clickTimerRef.current = null;
-                   router.push('/admin');
-                 }
-               }}
+          <Box
+            sx={{ display: "flex", alignItems: "center", cursor: "pointer" }}
+            onClick={() => {
+              clickCountRef.current += 1;
+              if (!clickTimerRef.current) {
+                clickTimerRef.current = setTimeout(() => {
+                  clickCountRef.current = 0;
+                  clickTimerRef.current && clearTimeout(clickTimerRef.current);
+                  clickTimerRef.current = null;
+                }, 1500);
+              }
+              if (clickCountRef.current >= 3) {
+                clickCountRef.current = 0;
+                clickTimerRef.current && clearTimeout(clickTimerRef.current);
+                clickTimerRef.current = null;
+                router.push("/admin");
+              }
+            }}
           >
             <motion.div
               style={{
@@ -185,14 +191,14 @@ function Header(props) {
                     fontSize: "0.875rem",
                     fontWeight: 500,
                     color: selectedIndex === index ? "#fff" : "#374151",
-                    background: selectedIndex === index
-                      ? "linear-gradient(to right, #2563eb, #9333ea) !important"
-                      : "transparent",
+                    background:
+                      selectedIndex === index
+                        ? "linear-gradient(to right, #2563eb, #9333ea) !important"
+                        : "transparent",
                     boxShadow: selectedIndex === index ? 2 : "none",
                     "&:hover": {
-                      backgroundColor: selectedIndex === index
-                        ? undefined
-                        : "#f3f4f6",
+                      backgroundColor:
+                        selectedIndex === index ? undefined : "#f3f4f6",
                       color: "#111827",
                     },
                   }}
@@ -201,9 +207,28 @@ function Header(props) {
                 </Button>
               </Link>
             ))}
-            <IconButton onClick={() => router.push('/cart')} aria-label="cart" sx={{ color: '#1f2937' }}>
-              <Badge color="primary" badgeContent={items.reduce((s, i) => s + i.qty, 0)}>
+            <IconButton
+              onClick={() => router.push("/cart")}
+              aria-label="cart"
+              sx={{ color: "#1f2937" }}
+            >
+              <Badge
+                color="primary"
+                badgeContent={items.reduce((s, i) => s + i.qty, 0)}
+              >
                 <BsCart />
+              </Badge>
+            </IconButton>
+            <IconButton
+              onClick={() => router.push("/my-account")}
+              aria-label="cart"
+              sx={{ color: "#1f2937" }}
+            >
+              <Badge
+                color="primary"
+                badgeContent={items.reduce((s, i) => s + i.qty, 0)}
+              >
+                <MdAccountCircle className=" text-3xl" />
               </Badge>
             </IconButton>
           </Box>
@@ -213,7 +238,11 @@ function Header(props) {
             edge="start"
             onClick={handleDrawerToggle}
             aria-label="open drawer"
-            sx={{ display: { xs: "block", md: "none" }, color: "#1f2937", ml: 1 }}
+            sx={{
+              display: { xs: "block", md: "none" },
+              color: "#1f2937",
+              ml: 1,
+            }}
           >
             <MdMenu size={24} />
           </IconButton>
